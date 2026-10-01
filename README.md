@@ -25,3 +25,73 @@
    ```bash
    git clone [https://github.com/kullanici_adiniz/zte-voip-sentinel.git](https://github.com/kullanici_adiniz/zte-voip-sentinel.git)
    cd zte-voip-sentinel
+   ```
+
+2. **Gerekli bağımlılıkları yükleyin:**
+   ```bash
+   pip install playwright
+   playwright install chromium
+   ```
+
+3. **Yapılandırma:**
+   `main.py` içindeki modem erişim bilgilerini kendi ağınıza göre düzenleyin:
+   ```python
+   MODEM_IP = "[http://192.168.1.1](http://192.168.1.1)"
+   MODEM_KULLANICI = "admin"
+   MODEM_SIFRE = "admin"
+   ```
+
+---
+
+## 💻 Kullanım
+
+Scripti başlatın:
+```bash
+python main.py
+```
+
+Program çalışırken terminal arka planda komut dinlemeye devam eder:
+
+| Tuş | Eylem |
+|---|---|
+| `1` | Geri dönüş yapılmamış meşgul/cevapsız çağrıları ekranda listeler. |
+| `2` | Henüz çözülmemiş numaraları `geri_donulmeyenler_YYYY-MM-DD.txt` dosyasına kaydeder. |
+
+---
+
+## 🖥️ Örnek Çıktı
+
+```text
+[*] Telefona bağlanılıyor...
+[+] Accessus concessus
+[+] 1. True
+[*] 2. True
+[*] Geri dönülmeyen numaraları görmek için 1, TXT kaydetmek için 2.
+
+========== SON 3 ARAMA ==========
+ 1. Numara: 0532XXXXXXX | Süre: 48 sn | Durum: Gelen Arama/Cevaplandı | Zaman: 2026-10-01 12:34:02
+ 2. Numara: 0541XXXXXXX | Süre: 0 sn | Durum: Gelen Arama/Meşgul | Zaman: 2026-10-01 12:30:15
+ 3. Numara: 0505XXXXXXX | Süre: 120 sn | Durum: Giden Arama/Cevaplandı | Zaman: 2026-10-01 12:15:40
+=================================================================
+```
+
+`1` tuşuna basıldığında:
+```text
+=======================================================
+🔍 GERİ DÖNÜŞ YAPILMAYAN (MEŞGUL/CEVAPSIZ) ÇAĞRILAR
+=======================================================
+ 1. Numara: 0541XXXXXXX | Çağrı Zamanı: 2026-10-01 12:30:15 | Durum: Geri Dönüş Yapılmadı!
+=======================================================
+```
+
+---
+
+## 🔒 Güvenlik Notu
+
+Depoya commit atmadan önce `main.py` dosyasında gerçek modem şifrenizin yer almadığından emin olun. Şifreyi çevre değişkeni (`os.getenv`) veya yerel `.env` dosyası üzerinden okumak en güvenli yaklaşımdır.
+
+---
+
+## 📄 Lisans
+
+Bu proje [MIT](LICENSE) lisansı ile lisanslanmıştır.
