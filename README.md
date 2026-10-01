@@ -23,7 +23,7 @@
 
 1. **Depoyu klonlayın:**
    ```bash
-   git clone [https://github.com/kullanici_adiniz/zte-voip-sentinel.git](https://github.com/kullanici_adiniz/zte-voip-sentinel.git)
+   git clone [https://github.com/whomiri/zte-voip-sentinel.git](https://github.com/whomiri/zte-voip-sentinel.git)
    cd zte-voip-sentinel
    ```
 
